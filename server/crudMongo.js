@@ -69,6 +69,17 @@ const findPersonById= (personId,done)=>{
             done(null, data)
     })
 }
+const findandEditandSave= (personId,done)=>{
+    Person.findById(personId,(err, person)=>{
+        if(err) return done(err)
+            person.favoriteFoods.push("dolipran")
+        person.markModified('favoriteFoods')
+        person.save((err, updatePerson)=>{
+            if(err) return done(err)
+                done(null,updatePerson)
+        })
+    })
+}
 
 
 // ....to be continued
