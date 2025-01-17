@@ -82,4 +82,30 @@ const findandEditandSave= (personId,done)=>{
 }
 
 
+const findandandUpdate= (personName,done)=>{
+Person.findByIdAndUpdate(
+    {name:personName},
+    {name:20},
+    {new:true},
+    (err, data)=>{
+        if(err) return done(err)
+            done(null,data)
+    })
+}
+
+
+const removeByID =(personId, done)=>{
+    Person.findByIdAndDelete(personId, (err, data)=>{
+        if(err) return done(err)
+            done(null,data)
+    })
+}
+
+const removeManyperson = (done)=>{
+    Person.deleteMany({name:"jhon"}, (err, data)=>{
+        if(err) return done(err)
+            done(null,data)
+    })
+}
+
 // ....to be continued
